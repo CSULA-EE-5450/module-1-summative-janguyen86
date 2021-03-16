@@ -14,7 +14,7 @@ In this version of the game, each player starts out with $100 and during each ro
 only 1 item. The last player to lose all their money wins that game. 
 
 
-##Files 
+##Files
 `game.py` - Basic functions to carry out the game 
 
 `test_game.py` - Tests for the `game.py` functions
@@ -30,3 +30,5 @@ only 1 item. The last player to lose all their money wins that game.
 `game.kv` - .kv template for the GUI
 
 `requests.py`- HTTP requests page
+
+(files in .github->Game)
