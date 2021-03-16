@@ -1,0 +1,156 @@
+Page_manager:
+    Home_Page
+    Game_Page
+    Dice_Page
+    Winner_Page
+    Loser_Page
+
+<Home_Page>:
+    name: "home"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        Label:
+            text: "Welcome to Bầu Cua Tôm Cá"
+        Label:
+            text: "Enter Number of Players in the Box Below"
+        TextInput:
+            id: num
+            multiline: False
+
+        Button:
+            text: "Next"
+            on_release:
+                app.root.current = "game"
+                root.manager.transition.direction = "left"
+
+
+<Game_Page>:
+    name: "game"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        Label:
+            text: "Enter amount to bet in the box below:"
+        TextInput:
+            id: amount
+            multiline: False
+
+        Button:
+            id: fish
+            text: "Fish"
+            on_release:
+                root.press_fish()
+
+        Button:
+            id: shrimp
+            text: "Shrimp"
+            on_release:
+                root.press_shrimp()
+
+        Button:
+            id: crab
+            text: "Crab"
+            on_release:
+                root.press_crab()
+
+        Button:
+            id: rooster
+            text: "Rooster"
+            on_release:
+                root.press_rooster()
+
+        Button:
+            id: gourd
+            text: "Bottle Gourd"
+            on_release:
+                root.press_gourd()
+
+        Button:
+            id: deer
+            text: "Deer"
+            on_release:
+                root.press_deer()
+
+        Button:
+            id: enter
+            text: "Enter"
+            on_release:
+                root.committed()
+                app.root.current = "dice"
+                root.manager.transition.direction = "left"
+
+<Dice_Page>:
+    name: "dice"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        Label:
+            text: "The three dice are:"
+        Label:
+            text: root.roll_dice()
+
+        Label:
+            text: "Your winnings/loss are:"
+        Label:
+            text: root.player_winningsloss()
+
+        Label:
+            text: "You have this much money left:"
+        Label:
+            text: root.get_total()
+
+        Button:
+            text: "Continue playing?"
+            on_release:
+                app.root.current = "game"
+                root.manager.transition.direction = "right"
+
+        Button:
+            text: "End Game"
+            on_release:
+                app.root.current = "loser"
+                root.manager.transition.direction = "left"
+
+<Loser_Page>:
+    name: "loser"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        Label:
+            text: "LOOOOOOSER. Ha! Better luck next time"
+
+        Button:
+            text: "Return to home page?"
+            on_release:
+                app.root.current = "home"
+
+        Button:
+            text: "View Winner"
+            on_release:
+                app.root.current = "winner"
+
+
+<Winner_Page>:
+    name: "winner"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        Label:
+            text: "The winner is"
+        Label:
+            text: root.get_winner()
+
+        Label:
+            text: "Congratulations! You're not broke!"
+
+        Button:
+            text: "Return to Home Page?"
+            on_release:
+                app.root.current = "home"
+                root.manager.transition.direction = "up"
